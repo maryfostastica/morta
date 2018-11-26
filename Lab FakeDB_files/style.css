@@ -21,3 +21,6 @@ label {
  #grid-contatos tbody {
      cursor: pointer;
  }
+ .hide {
+    display: none;
+ }

@@ -2,76 +2,24 @@
 var dbfake = {
     "data": [
         {
-            "Id": 1,
-            "Nome": "Leanne Graham",
-            "Autor": "Sincere@april.biz",
-            "Genero": "1-770-736-8031",
-            "Avaliaçao": "hildegard.org",
-            "Edicao": "hildegard.org",
-            "Imagem": "#"
+            "id": 1,
+            "nome": "primeiro alguma coisa",
+            "autor": "maria",
+            "editora": "teste1",
+            "genero": "romance",
+            "avaliacao": "3",
+            "edicao": "2",
+            "imagem": "#"
         },
         {
             "id": 2,
-            "nome": "Ervin Howell",
-            "email": "Shanna@melissa.tv",
-            "telefone": "010-692-6593",
-            "website": "anastasia.net"
-        },
-        {
-            "id": 3,
-            "nome": "Clementine Bauch",
-            "email": "Nathan@yesenia.net",
-            "telefone": "1-463-123-4447",
-            "website": "ramiro.info"
-        },
-        {
-            "id": 4,
-            "nome": "Patricia Lebsack",
-            "email": "Julianne.OConner@kory.org",
-            "telefone": "493-170-9623 x156",
-            "website": "kale.biz"
-        },
-        {
-            "id": 5,
-            "nome": "Chelsey Dietrich",
-            "email": "Lucio_Hettinger@annie.ca",
-            "telefone": "(254)954-1289",
-            "website": "demarco.info"
-        },
-        {
-            "id": 6,
-            "nome": "Mrs. Dennis Schulist",
-            "email": "Karley_Dach@jasper.info",
-            "telefone": "1-477-935-8478",
-            "website": "ola.org"
-        },
-        {
-            "id": 7,
-            "nome": "Kurtis Weissnat",
-            "email": "Telly.Hoeger@billy.biz",
-            "telefone": "210.067.6132",
-            "website": "elvis.io"
-        },
-        {
-            "id": 8,
-            "nome": "Nicholas Runolfsdottir V",
-            "email": "Sherwood@rosamond.me",
-            "telefone": "586.493.6943",
-            "website": "jacynthe.com"
-        },
-        {
-            "id": 9,
-            "nome": "Glenna Reichert",
-            "email": "Chaim_McDermott@dana.io",
-            "telefone": "(775)976-6794",
-            "website": "conrad.com"
-        },
-        {
-            "id": 10,
-            "nome": "Clementina DuBuque",
-            "email": "Rey.Padberg@karina.biz",
-            "telefone": "024-648-3804",
-            "website": "ambrose.net"
+            "nome": "Meu pé de laranja lima",
+            "autor": "Eu já não lembro",
+            "editora": "teste2",
+            "genero": "ficção",
+            "avaliacao": "9",
+            "edicao": "3",
+            "imagem": "#"
         }
     ]
 }
@@ -79,7 +27,7 @@ var dbfake = {
 // Caso exista no Local Storage, recupera os dados salvos
 var db = JSON.parse(localStorage.getItem('db'));
 if (!db) {
-    db = dbfake
+    db = dbfake;
 };
 
 // Exibe mensagem em um elemento de ID msg
