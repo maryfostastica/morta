@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="fakedb.js"></script>
+    <script>
+        var sHtml = '';
+        function loadData() {
+            db = dbfake.data;
+            for (i = 0; i < db.length; i++) {
+                sHtml += `<p>Cliente: ${db[i].nome} <br>
+                        Autor: ${db[i].autor}<br>
+                        Edicao: ${db[i].edicao}<br>
+                        Editora: ${db[i].editora}<br>
+                        Genero: ${db[i].genero}<br>
+                        Avaliacao: ${db[i].avaliacao}<br>
+                        Imagem: ${db[i].imagem}</p>`;
+            }
+            document.getElementById('tela').innerHTML = sHtml;
+        }
+
+    </script>
+</head>
+
+<body onload="loadData()">
+    <div id="tela"></div>
+</body>
+
+</html>

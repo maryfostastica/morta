@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)file:///C:/Users/1118937/Downloads/TRABALHO%20DE%20DIW/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab FakeDB</title>
+    <link rel="stylesheet" href="./Lab FakeDB_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Lab FakeDB_files/style.css">
+    <script src="./Lab FakeDB_files/jquery-3.2.1.slim.min.js.download" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="./Lab FakeDB_files/popper.min.js.download" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="./Lab FakeDB_files/bootstrap.min.js.download" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body onload="init()" class="">
+    <h1>BUSQUE BOOKS</h1>
+    <div class="container">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Cadastre um novo livro !
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cadastro de Livros</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <form id="form-contato">
+                        <div class="row">
+                            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                                <div class="alert alert-info" id="textblue">Preencha os dados</div>
+                            </div>
+                        </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label for="inputId">Id</label>
+                                    <input type="text" class="form-control" id="inputId" placeholder="ID" disabled="">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="inputNome">Nome (*)</label>
+                                    <input type="text" class="form-control" id="inputNome" required="" placeholder="Informe o nome do livro">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-7">
+                                    <label for="inputAutor">Autor (*)</label>
+                                    <input type="text" class="form-control" id="inputAutor" required="" placeholder="Autor">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="inputEditora">Editora (*)</label>
+                                    <input type="text" class="form-control" id="inputEditora" required="" placeholder="Informe a Editora">
+                                </div>
+                                <div class="col-sm-7 mt-2">
+                                    <label for="inputGênero">Gênero (*)</label>
+                                    <input type="text" class="form-control" id="inputGenero" required="" placeholder="Gênero">
+                                </div>
+                                <div class="col-sm-4 mt-2">
+                                    <label for="inputAvaliação">Avaliação (*)</label>
+                                    <input type="text" class="form-control" id="inputAvaliacao" required="" placeholder="Dê uma nota de 0 a 10">
+                                </div>
+                                <div class="col-sm-4 mt-2">
+                                    <label for="inputEdicao">Edição(*)</label>
+                                    <input type="text" class="form-control" id="inputEdicao" required="" placeholder="Edição">
+                                </div>
+                                <div class="col-sm-7 mt-2">
+                                    <label for="inputImagem">Imagem(*)</label>
+                                    <input type="file" class="form-control" id="inputImagem" placeholder="">
+                                </div>
+                            </div>
+                            </form>
+                            <div class="form-group row">
+                                <div class="col-sm-5 mt-2">
+                                    <small>(*) Campos obrigatórios</small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <input type="button" class="btn btn-success" id="btnInsert" value="Inserir">
+                                    <input type="button" class="btn btn-warning" id="btnUpdate" value="Alterar">
+                                    <input type="button" class="btn btn-danger" id="btnDelete" value="Excluir">
+                                    <input type="button" class="btn btn-secondary" id="btnClear" value="Limpar Form">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-contatos" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Editora</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-contatos"><tr><td scope="row">1</td><td>Admirável Mundo Novo</td><td>Aldous Huxley</td><td>Primeira</td></tr><tr><td scope="row">2</td><td>Meu pé de laranja lima</td><td>José Mauro de Vasconcelos</td><td>Primeira</td></tr><tr><td scope="row">3</td><td>Clementine Bauch</td><td>1-463-123-4447</td><td>Nathan@yesenia.net</td></tr><tr><td scope="row">4</td><td>Patricia Lebsack</td><td>493-170-9623 x156</td><td>Julianne.OConner@kory.org</td></tr><tr><td scope="row">5</td><td>Chelsey Dietrich</td><td>(254)954-1289</td><td>Lucio_Hettinger@annie.ca</td></tr><tr><td scope="row">6</td><td>Mrs. Dennis Schulist</td><td>1-477-935-8478</td><td>ola.org</td></tr><tr><td scope="row">7</td><td>Kurtis Weissnat</td><td>210.067.6132</td><td>Telly.Hoeger@billy.biz</td></tr><tr><td scope="row">8</td><td>Nicholas Runolfsdottir V</td><td>586.493.6943</td><td>Sherwood@rosamond.me</td></tr><tr><td scope="row">9</td><td>Glenna Reichert</td><td>(775)976-6794</td><td>Chaim_McDermott@dana.io</td></tr><tr><td scope="row">10</td><td>Clementina DuBuque</td><td>024-648-3804</td><td>Rey.Padberg@karina.biz</td></tr><tr></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="fakedb.js"></script>
+    <script src="./Lab FakeDB_files/jquery.min.js.download"></script>
+    <script src="./Lab FakeDB_files/fakedb.js.download"></script>
+    <script>
+        function exibeContatos() {
+            // Remove todas as linhas do corpo da tabela
+            $("#table-contatos").html("");
+
+            // Popula a tabela com os registros do banco de dados
+            for (i = 0; i < db.data.length; i++) {
+                let contato = db.data[i];
+                $("#table-livro").append(`<tr><td scope="row">${.id}</td><td>${livro.nome}</td><td>${livro.autor}</td><td>${livro.editora}</td><td>${livro.genero}</td><td>${livro.avaliacao}</td><td>${livro.edicao}</td><td>${livro.imagem}</td></tr>`);
+            }
+        }
+
+        function init() {
+            // Adiciona funções para tratar os eventos 
+            $("#btnInsert").click(function () {
+                // Verfica se o formulário está preenchido corretamente
+                if (!$('#form-contato')[0].checkValidity()) {
+                    displayMessage("Preencha os dados corretamente.");
+                    return;
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campoNome = $("#inputNome").val();
+                let campoAutor = $("#inputAutor").val();
+                let campoEditora = $("#inputEditora").val();
+                let campoGenero = $('#inputGenero').val();
+                let campoAvaliacao = $('#inputAvaliacao').val();
+                let campoEdicao = $('#inputEdicao').val();
+                let campoImagem = $('#inputImagem').val();
+                let livro = { nome: campoNome, autor: campoAutor, editora: campoEditora, genero: campoGenero, avaliacao: campoAvaliacao, edicao: campoEdicao, imagem: campoImagem};
+
+                insertContato(livro);
+
+                // Reexibe os contatos
+                exibeContatos();
+
+                // Limpa o formulario
+                $("#form-contato")[0].reset();
+            });
+
+            // Intercepta o click do botão Alterar
+            $("#btnUpdate").click(function () {
+                // Obtem os valores dos campos do formulário
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um contato para ser alterado.");
+                    return;
+                }
+                let campoNome = $("#inputNome").val();
+                let campoAutor = $("#inputAutor").val();
+                let campoEditora = $("#inputEditora").val();
+                let campoGenero = $("#inputGenero").val();
+                let campoAvaliacao = $("#inputAvaliacao").val();
+                let campoEdicao = $("#inputEdicao").val();
+                let campoImagem = $("#inputImagem").val();
+                let livro = { nome: campoNome, autor: campoAutor, editora: campoEditora, genero: campoGenero, avaliacao: campoAvaliacao, edicao: campoEdicao, imagem: campoImagem};
+
+                updateContato(parseInt(campoId), livro);
+
+                // Reexibe os contatos
+                exibeContatos();
+
+                // Limpa o formulario
+                $("#form-contato")[0].reset();
+            });
+
+            // Intercepta o click do botão Excluir
+            $("#btnDelete").click(function () {
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um contato a ser excluído.");
+                    return;
+                }
+                deleteContato(parseInt(campoId));
+
+                // Reexibe os contatos
+                exibeContatos();
+
+                // Limpa o formulario
+                $("#form-contato")[0].reset();
+            });
+
+            // Intercepta o click do botão Listar Contatos
+            $("#btnClear").click(function () {
+                $("#form-contato")[0].reset();
+            });
+
+            // Oculta a mensagem de aviso após alguns segundos
+            $('#msg').bind("DOMSubtreeModified", function () {
+                window.setTimeout(function () {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                        $(this).remove();
+                    });
+                }, 5000);
+            });
+
+            // Preenche o formulário quando o usuario clicar em uma linha da tabela 
+            $("#grid-contatos").on("click", "tr", function (e) {
+                let linhaContato = this;
+                $("#inputId").val(linhaContato.childNodes[0].firstChild.nodeValue);
+                $("#inputNome").val(linhaContato.childNodes[1].firstChild.nodeValue);
+                $("#inputAutor").val(linhaContato.childNodes[2].firstChild.nodeValue);
+                $("#inputEditora").val(linhaContato.childNodes[3].firstChild.nodeValue);
+                $("#inputGenero").val(linhaContato.childNodes[4].firstChild.nodeValue);
+                $("#inputEdicao").val(linhaContato.childNodes[5].firstChild.nodeValue);
+                $("#inputImagem").val(linhaContato.childNodes[6].firstChild.nodeValue);
+            });
+            exibeContatos();
+        }
+    </script>
+
+
+</body></html>
